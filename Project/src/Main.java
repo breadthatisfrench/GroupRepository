@@ -4,12 +4,14 @@ import dflt.MyScreen;
 
 public class Main {
 
-	public static void main(String args[])
+	public static void main(String[] args)
 	{
 		MyScreen ms = new MyScreen();
-		JFrame frame = new JFrame("Name");
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		JFrame frame = new JFrame("Window");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		frame.add(ms.getPanel());
+		frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+		frame.pack();
+		frame.setVisible(true);
 	}
 }
