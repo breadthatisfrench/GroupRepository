@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 import dflt.MyScreen;
@@ -13,5 +15,7 @@ public class Main {
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.pack();
 		frame.setVisible(true);
+		frame.pack();
+		frame.repaint();
 	}
 }
