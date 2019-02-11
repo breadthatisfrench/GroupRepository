@@ -17,5 +17,8 @@ public class Main {
 		frame.setVisible(true);
 		frame.pack();
 		frame.repaint();
+		
+		Player player = new Player(new Coordinate(0, 0), 5, 5);
+		frame.addKeyListener(player);
 	}
 }

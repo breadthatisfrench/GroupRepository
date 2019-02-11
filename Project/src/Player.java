@@ -3,12 +3,72 @@ import java.awt.event.KeyListener;
 
 public class Player implements KeyListener
 {
-	int x = 0;
-	int y = 0;
+	private int width, height;
+	private Coordinate pos, foodPos;
+	public Player(Coordinate pos, int width, int height) {
+		this.pos = pos;
+		this.width = width;
+		this.height = height;
+	}
 	
-	public void setLocation(int x, int y)
-	{
+	private void die() {
+		System.out.println("You died");
+	}
+	
+	private void up() {
+		if(pos.y - 1 >= 0)
+		{
+			pos.y--;
+		}
+		else
+		{
+			die();
+		}
+	}
+	
+	private void down() {
+		if(pos.y + 1 < height)
+		{
+			pos.y++;
+		}
+		else
+		{
+			die();
+		}
+	}
+	
+	private void left() {
 		
+		if(pos.x - 1 >= 0)
+		{
+			pos.x--;
+			
+		}
+		else
+		{
+			die();
+		}
+	}
+	
+	private void right() {
+		if(pos.x + 1 < width)
+		{
+			pos.x++;
+		}
+		else
+		{
+			die();
+		}
+	}
+	
+	public Coordinate getLocation()
+	{
+		return pos;
+	}
+	
+	public void setLocation(Coordinate input)
+	{
+		pos = input;
 	}
 
 	@Override
@@ -31,13 +91,21 @@ public class Player implements KeyListener
 		key = Character.toLowerCase(key);
 		switch(key)
 		{
-		case 'w':
-			up();
-			break;
-		case 's':
-			down();
-			break;
+			case 'w':
+				up();
+				break;
+			case 's':
+				down();
+				break;
+			case 'a':
+				left();
+				break;
+			case 'd':
+				right();
+				break;
 		}
+		
+		System.out.println("pos.x: " + pos.x + " pos.y: " + pos.y);
 	}
 
 		
