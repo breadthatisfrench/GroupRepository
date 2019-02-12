@@ -1,13 +1,13 @@
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
-
-import dflt.MyScreen;
 
 public class Main {
 
-	public static void main(String[] args)
+	private int width, height;
+	
+	public Main(int width, int height)
 	{
+		this.width = height;
+		this.height = height;
 		//MyScreen ms = new MyScreen();
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		JFrame frame = new JFrame("Window");
@@ -18,7 +18,12 @@ public class Main {
 		frame.pack();
 		frame.repaint();
 		
-		Player player = new Player(new Coordinate(0, 0), 5, 5);
+		Player player = new Player(new Coordinate(0, 0), width, height);
 		frame.addKeyListener(player);
 	}
+	public static void main(String[] args)
+	{
+		new Main(5, 5);
+	}
+	
 }
