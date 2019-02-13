@@ -1,3 +1,4 @@
+package dflt;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.awt.event.KeyListener;
@@ -21,15 +22,23 @@ public class Player implements KeyListener
 	{
 		return foodPos;
 	}
-
+	
+	public Coordinate getPos()
+	{
+		return pos;
+	}
+	
 	public void setFoodPos() {
 		foodPos = new Coordinate(rand.nextInt(width), rand.nextInt(height));
 	}
 	
-	
-	
 	private void die() {
 		System.out.println("You died");
+	}
+	
+	public boolean isAt(int width, int height)
+	{
+		return pos.equals(new Coordinate(width, height));
 	}
 	
 	private void up() {
