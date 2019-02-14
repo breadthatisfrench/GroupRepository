@@ -1,6 +1,8 @@
 package dflt;
 import java.awt.event.KeyEvent;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.KeyListener;
 
 //Use Random or rand.nextInt() to get food to position itself. Then, in order to make it into the grid neatly, if we have the grid have 10x10px cells, then divide x and y by 10, then
@@ -12,10 +14,14 @@ public class Player implements KeyListener
 	private int width, height;
 	private Coordinate pos, foodPos;
 	private Random rand = new Random();
+	private Direction dir;
+	
 	public Player(Coordinate pos, int width, int height) {
 		this.pos = pos;
 		this.width = width;
 		this.height = height;
+		Timer timer = new Timer();
+		timer.schedule(new MyTimerTask(this), 0, 250);
 	}
 	
 	public Coordinate getFoodPos() 
@@ -39,52 +45,6 @@ public class Player implements KeyListener
 	public boolean isAt(int width, int height)
 	{
 		return pos.equals(new Coordinate(width, height));
-	}
-	
-	private void up() {
-		if(pos.y - 1 >= 0)
-		{
-			pos.y--;
-		}
-		else
-		{
-			die();
-		}
-	}
-	
-	private void down() {
-		if(pos.y + 1 < height)
-		{
-			pos.y++;
-		}
-		else
-		{
-			die();
-		}
-	}
-	
-	private void left() {
-		
-		if(pos.x - 1 >= 0)
-		{
-			pos.x--;
-			
-		}
-		else
-		{
-			die();
-		}
-	}
-	
-	private void right() {
-		if(pos.x + 1 < width)
-		{
-			pos.x++;
-		}
-		else
-		{
-			die();
-		}
 	}
 	
 	public Coordinate getLocation()
@@ -118,26 +78,37 @@ public class Player implements KeyListener
 		switch(key)
 		{
 			case 'w':
-				up();
+				dir = Direction.NORTH;
 				break;
 			case 's':
-				down();
+				//down();
 				break;
 			case 'a':
-				left();
+				//left();
 				break;
 			case 'd':
-				right();
+				//ight();
 				break;
 		}
 		
-		System.out.println("pos.x: " + pos.x + " pos.y: " + pos.y);
 	}
-
 	
-
-
-
-
+	public void move()
+	{
+		switch(dir)
+		{
+			case NORTH:
+				//y--;
+				break;
+			case EAST:
+				//x++;
+				break;
+			case SOUTH:
+				//y++;
+				break;
+			case WEST:
+				//x--;
+		}
+	}
 		
 }

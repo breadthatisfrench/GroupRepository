@@ -45,7 +45,7 @@ public class Main {
 	
 	public static void main(String[] args)
 	{
-		new Main(5, 5);
+		new Main(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
 	}
 	
 	public BufferedImage getPixels()
@@ -63,7 +63,7 @@ public class Main {
 				if(player.isAt(x, y))
 				{
 					g2.setColor(Color.RED);
-					System.out.println(true);
+					
 				}
 				else
 				{

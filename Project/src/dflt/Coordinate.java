@@ -13,7 +13,7 @@ public class Coordinate {
 		if(input instanceof Coordinate)
 		{
 			Coordinate oth = (Coordinate)input;
-			System.out.println(x + " " + oth.x + " " + y + " " + oth.y);
+			
 			return x == oth.x && y == oth.y;
 		}
 		return false;
