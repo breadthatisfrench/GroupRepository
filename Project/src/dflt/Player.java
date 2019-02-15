@@ -22,6 +22,7 @@ public class Player implements KeyListener
 		this.height = height;
 		Timer timer = new Timer();
 		timer.schedule(new MyTimerTask(this), 0, 250);
+		dir = Direction.EAST;
 	}
 	
 	public Coordinate getFoodPos() 
@@ -82,12 +83,15 @@ public class Player implements KeyListener
 				break;
 			case 's':
 				//down();
+				dir = Direction.SOUTH;
 				break;
 			case 'a':
 				//left();
+				dir = Direction.WEST;
 				break;
 			case 'd':
 				//ight();
+				dir = Direction.EAST;
 				break;
 		}
 		
@@ -98,16 +102,16 @@ public class Player implements KeyListener
 		switch(dir)
 		{
 			case NORTH:
-				//y--;
+				pos.y--;
 				break;
 			case EAST:
-				//x++;
+				pos.x++;
 				break;
 			case SOUTH:
-				//y++;
+				pos.y++;
 				break;
 			case WEST:
-				//x--;
+				pos.x--;
 		}
 	}
 		
