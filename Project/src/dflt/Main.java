@@ -1,7 +1,10 @@
 package dflt;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
@@ -35,10 +38,12 @@ public class Main {
 	private void initFrame(JFrame input)
 	{
 		input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		input.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		input.setLayout(new BorderLayout());
 		input.pack();
 		input.setVisible(true);
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		System.out.println(gd.getDisplayMode().getWidth()+ "   " + gd.getDisplayMode().getHeight());
+		input.setPreferredSize(new Dimension(gd.getDisplayMode().getWidth(), gd.getDisplayMode().getHeight()));
 		input.pack();
 		input.repaint();
 	}
