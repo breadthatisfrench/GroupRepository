@@ -83,19 +83,28 @@ public class Player implements KeyListener
 		switch(key)
 		{
 			case 'w':
-				dir = Direction.NORTH;
+				if(dir != Direction.SOUTH)
+				{
+					dir = Direction.NORTH;
+				}
 				break;
 			case 's':
-				
-				dir = Direction.SOUTH;
+				if(dir != Direction.NORTH) 
+				{
+					dir = Direction.SOUTH;
+				}
 				break;
 			case 'a':
-				
-				dir = Direction.WEST;
+				if(dir != Direction.EAST)
+				{
+					dir = Direction.WEST;
+				}
 				break;
 			case 'd':
-				
-				dir = Direction.EAST;
+				if(dir != Direction.WEST)
+				{
+					dir = Direction.EAST;
+				}
 				break;
 		}
 		
@@ -106,6 +115,7 @@ public class Player implements KeyListener
 		switch(dir)
 		{
 			case NORTH:
+				
 				pos.y--;
 				if(pos.y < 0)
 				{
@@ -121,7 +131,7 @@ public class Player implements KeyListener
 				break;
 			case SOUTH:
 				pos.y++;
-				if(pos.y > (height + 1))
+				if(pos.y > (height - 1))
 				{
 					die();
 				}
