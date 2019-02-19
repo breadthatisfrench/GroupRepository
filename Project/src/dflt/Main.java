@@ -26,7 +26,7 @@ public class Main {
 		JFrame frame = new JFrame("Window");
 		initFrame(frame);
 		frame.add(ms.getPanel(), BorderLayout.CENTER);
-		player = new Player(new Coordinate(0, 0), width, height);
+		player = new Player(new Coordinate(0, 0), ms, width, height);
 		frame.addKeyListener(player);
 		player.setFoodPos();
 		frame.pack();

@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.KeyListener;
+import bensAbstract.Screen;
 
 //Use Random or rand.nextInt() to get food to position itself. Then, in order to make it into the grid neatly, if we have the grid have 10x10px cells, then divide x and y by 10, then
 //multiply by 10, thus making the coordinates into multiples of 10, fitting nicely in grid cells.
@@ -15,11 +16,13 @@ public class Player implements KeyListener
 	private Coordinate pos, foodPos;
 	private Random rand = new Random();
 	private Direction dir;
+	private MyScreen ms;
 	
-	public Player(Coordinate pos, int width, int height) {
+	public Player(Coordinate pos, MyScreen ms, int width, int height) {
 		this.pos = pos;
 		this.width = width;
 		this.height = height;
+		this.ms = ms;
 		Timer timer = new Timer();
 		timer.schedule(new MyTimerTask(this), 0, 250);
 		dir = Direction.EAST;
@@ -41,6 +44,7 @@ public class Player implements KeyListener
 	
 	private void die() {
 		System.out.println("You died");
+		ms.stop();
 	}
 	
 	public boolean isAt(int width, int height)
@@ -103,9 +107,11 @@ public class Player implements KeyListener
 		{
 			case NORTH:
 				pos.y--;
+				
 				break;
 			case EAST:
 				pos.x++;
+				
 				break;
 			case SOUTH:
 				pos.y++;
