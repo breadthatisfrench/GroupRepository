@@ -86,15 +86,15 @@ public class Player implements KeyListener
 				dir = Direction.NORTH;
 				break;
 			case 's':
-				//down();
+				
 				dir = Direction.SOUTH;
 				break;
 			case 'a':
-				//left();
+				
 				dir = Direction.WEST;
 				break;
 			case 'd':
-				//ight();
+				
 				dir = Direction.EAST;
 				break;
 		}
@@ -107,17 +107,32 @@ public class Player implements KeyListener
 		{
 			case NORTH:
 				pos.y--;
-				
+				if(pos.y < 0)
+				{
+					die();
+				}
 				break;
 			case EAST:
 				pos.x++;
-				
+				if(pos.x > (width - 1))
+				{
+				  	die();
+				}
 				break;
 			case SOUTH:
 				pos.y++;
+				if(pos.y > (height + 1))
+				{
+					die();
+				}
 				break;
 			case WEST:
 				pos.x--;
+				if(pos.x < 0)
+				{
+					die();
+				}
+				break;
 		}
 	}
 		
