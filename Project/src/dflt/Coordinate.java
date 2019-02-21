@@ -2,7 +2,7 @@ package dflt;
 
 public class Coordinate {
 	public int x, y;
-	public Coordinate(int x, int y)
+	public Coordinate(int x, int y) //sets coordinate of you
 	{
 		this.x = x;
 		this.y = y;

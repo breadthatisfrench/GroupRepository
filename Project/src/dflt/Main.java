@@ -17,7 +17,7 @@ public class Main {
 	
 	public static final int squareLength = 20;
 	
-	public Main(int width, int height)
+	public Main(int width, int height) //start of game, JFrame setup
 	{
 		this.width = height;
 		this.height = height;
@@ -35,7 +35,7 @@ public class Main {
 		ms.start();
 	}
 	
-	private void initFrame(JFrame input)
+	private void initFrame(JFrame input) //all basic JFrame setup that stays the same for all programs
 	{
 		input.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		input.setLayout(new BorderLayout());
@@ -48,12 +48,12 @@ public class Main {
 		input.repaint();
 	}
 	
-	public static void main(String[] args)
+	public static void main(String[] args) //dimensions for board [we input our own args (click drop-down arrow by run button, choose run configurations, click args tab, enter in two nums)]
 	{
 		new Main(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
 	}
 	
-	public BufferedImage getPixels()
+	public BufferedImage getPixels() //colors the pieces on the board (player, empty spots). We need to still color food and other body parts when added
 	{
 		BufferedImage bi = new BufferedImage(ms.getPanel().getWidth(), ms.getPanel().getHeight(), BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2 = (Graphics2D)bi.getGraphics();

@@ -6,8 +6,6 @@ import java.util.TimerTask;
 import java.awt.event.KeyListener;
 import bensAbstract.Screen;
 
-//Use Random or rand.nextInt() to get food to position itself. Then, in order to make it into the grid neatly, if we have the grid have 10x10px cells, then divide x and y by 10, then
-//multiply by 10, thus making the coordinates into multiples of 10, fitting nicely in grid cells.
 
 
 public class Player implements KeyListener
@@ -18,7 +16,7 @@ public class Player implements KeyListener
 	private Direction dir;
 	private MyScreen ms;
 	
-	public Player(Coordinate pos, MyScreen ms, int width, int height) {
+	public Player(Coordinate pos, MyScreen ms, int width, int height) { //sets player up where to start and how fast to move
 		this.pos = pos;
 		this.width = width;
 		this.height = height;
@@ -28,31 +26,32 @@ public class Player implements KeyListener
 		dir = Direction.EAST;
 	}
 	
-	public Coordinate getFoodPos() 
+	public Coordinate getFoodPos() //returns food's position (coords)
 	{
 		return foodPos;
 	}
 	
-	public Coordinate getPos()
+	public Coordinate getPos() //returns player's position
 	{
 		return pos;
 	}
 	
-	public void setFoodPos() {
+	public void setFoodPos() { //sets where food will spawn (not working currently). we need to get it to spawn within the white squares (right now, it could be anywhere)
 		foodPos = new Coordinate(rand.nextInt(width), rand.nextInt(height));
+		System.out.println(foodPos);
 	}
 	
-	private void die() {
+	private void die() { //death
 		System.out.println("You died");
 		ms.stop();
 	}
 	
-	public boolean isAt(int width, int height)
+	public boolean isAt(int width, int height) //sets player's new position
 	{
 		return pos.equals(new Coordinate(width, height));
 	}
 	
-	public Coordinate getLocation()
+	public Coordinate getLocation() //returns player's position
 	{
 		return pos;
 	}
@@ -63,20 +62,20 @@ public class Player implements KeyListener
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0)
+	public void keyPressed(KeyEvent arg0) //pointless
 	{
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0)
+	public void keyReleased(KeyEvent arg0) //pointless
 	{
 		
 		
 	}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) 
+	public void keyTyped(KeyEvent arg0) //changes player's directions
 	{
 		char key = arg0.getKeyChar();
 		key = Character.toLowerCase(key);
@@ -110,7 +109,7 @@ public class Player implements KeyListener
 		
 	}
 	
-	public void move()
+	public void move() //moves us each tick
 	{
 		switch(dir)
 		{
