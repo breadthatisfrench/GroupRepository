@@ -1,4 +1,5 @@
 package dflt;
+import java.awt.GraphicsDevice;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Timer;
@@ -15,6 +16,9 @@ public class Player implements KeyListener
 	private Random rand = new Random();
 	private Direction dir;
 	private MyScreen ms;
+	private GraphicsDevice gd;
+	private int randwidth;
+	private int randheight;
 	
 	public Player(Coordinate pos, MyScreen ms, int width, int height) { //sets player up where to start and how fast to move
 		this.pos = pos;
@@ -24,6 +28,18 @@ public class Player implements KeyListener
 		Timer timer = new Timer();
 		timer.schedule(new MyTimerTask(this), 0, 250);
 		dir = Direction.EAST;
+	}
+	
+	public void eat()
+	{
+		if(pos.x == randwidth && pos.y == randheight)
+		{
+			//grow();
+			randwidth = rand.nextInt(width);
+			randheight = rand.nextInt(height);
+			foodPos = new Coordinate(randwidth, randheight);
+			System.out.println(randwidth + " " + randheight);
+		}
 	}
 	
 	public Coordinate getFoodPos() //returns food's position (coords)
@@ -36,9 +52,15 @@ public class Player implements KeyListener
 		return pos;
 	}
 	
-	public void setFoodPos() { //sets where food will spawn (not working currently). we need to get it to spawn within the white squares (right now, it could be anywhere)
-		foodPos = new Coordinate(rand.nextInt(width), rand.nextInt(height));
-		System.out.println(foodPos);
+	public void setFoodPos() 
+	{ 
+		// sets where food will spawn (not working currently). we need to get it to spawn within the white squares (right now, it could be anywhere)
+		
+		randwidth = rand.nextInt(width);
+		randheight = rand.nextInt(height);
+		foodPos = new Coordinate(randwidth, randheight);
+		System.out.println(randwidth + " " + randheight);
+		
 	}
 	
 	private void die() { //death
@@ -109,7 +131,7 @@ public class Player implements KeyListener
 		
 	}
 	
-	public void move() //moves us each tick
+	public void move()
 	{
 		switch(dir)
 		{
@@ -120,6 +142,7 @@ public class Player implements KeyListener
 				{
 					die();
 				}
+				
 				break;
 			case EAST:
 				pos.x++;
@@ -127,6 +150,7 @@ public class Player implements KeyListener
 				{
 				  	die();
 				}
+				
 				break;
 			case SOUTH:
 				pos.y++;
@@ -141,6 +165,7 @@ public class Player implements KeyListener
 				{
 					die();
 				}
+				
 				break;
 		}
 	}
