@@ -32,6 +32,8 @@ public class Main {
 		frame.pack();
 		frame.repaint();
 		
+		System.out.println(player.getFoodPos());
+		
 		ms.start();
 	}
 	
@@ -65,14 +67,20 @@ public class Main {
 			{
 				int xPix = (x + 1) * widthSeperatorPixels;
 				int yPix = (y + 1) * heightSeperatorPixels;
-				if(player.isAt(x, y))
+				if(player.getPos().isAt(x, y))
 				{
 					g2.setColor(Color.RED);
+					
+				}
+				else if(player.getFoodPos().isAt(x, y))
+				{
+					g2.setColor(Color.BLUE);
 					
 				}
 				else
 				{
 					g2.setColor(Color.WHITE);
+					
 				}
 				g2.fillRect(xPix - squareLength / 2, yPix - squareLength / 2, squareLength, squareLength);
 			}

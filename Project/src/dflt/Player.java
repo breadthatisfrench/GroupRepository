@@ -68,11 +68,6 @@ public class Player implements KeyListener
 		ms.stop();
 	}
 	
-	public boolean isAt(int width, int height) //sets player's new position
-	{
-		return pos.equals(new Coordinate(width, height));
-	}
-	
 	public Coordinate getLocation() //returns player's position
 	{
 		return pos;

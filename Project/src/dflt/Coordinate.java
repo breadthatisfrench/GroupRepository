@@ -18,4 +18,15 @@ public class Coordinate {
 		}
 		return false;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "X: " + x + " Y: " + y;
+	}
+	
+	public boolean isAt(int x2, int y2)
+	{
+		return x == x2 && y == y2;
+	}
 }
